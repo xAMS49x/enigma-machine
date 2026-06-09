@@ -80,7 +80,7 @@ namespace Libraries
         public static void LogLine(string message)
         {
             Console.WriteLine(message);
-            log.AppendLine($"<program> {message}");
+            log.AppendLine("<program>: " + message);
         }
         
         public static void Log(string message)
@@ -92,11 +92,11 @@ namespace Libraries
         public static string Ask(string prompt)
         {
             Console.WriteLine(prompt);
-            log.Append($"<program> {prompt}");
+            log.Append($"<program>: {prompt}");
 
             string input = Console.ReadLine()!;
             log.AppendLine();
-            log.AppendLine($"<user> {input}");
+            log.AppendLine($"<user>: {input}");
 
             return input;
         }
@@ -104,8 +104,8 @@ namespace Libraries
         public static void SaveLog(int exitCode = 0)
         {
             log.AppendLine($"\nProcess finished with exit code {exitCode}");
-
-            string logDirectory = "/home/ams/RiderProjects/Refraction/logs";
+            
+            string logDirectory = "/home/ams/RiderProjects/EnigmaMachine/logs";
             string fileName = $"log_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.txt";
             string path = Path.Combine(logDirectory, fileName);
 
